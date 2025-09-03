@@ -1,7 +1,15 @@
+import 'package:chat_app/component/my_button.dart';
 import 'package:chat_app/component/my_textfield.dart';
 import 'package:flutter/material.dart';
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  // email and pw text controller
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _pwController = TextEditingController();
+   LoginPage({super.key});
+//login method
+  void login (){
+    // authenticate
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +38,7 @@ backgroundColor: Colors.grey.shade300,
           // email text field
          MyTextfield(hintText: 'Enter Your Email',
            obscureText: false,
+           controller: _emailController,
 
          ),
           const SizedBox(height: 10,),
@@ -37,13 +46,24 @@ backgroundColor: Colors.grey.shade300,
           // pw text field
           MyTextfield(hintText: 'Password',
             obscureText: true,
+            controller: _pwController,
 
           ),
-          
-          // login button 
+          const SizedBox(height: 25,),
+          // login button
+          MyButton(text: "Login",
+          onTap: login ,
+          ),
+          const SizedBox(height: 25,),
           
           //resister now
-          
+          Row(mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("Do not have account ?",style: TextStyle(color: Theme.of(context).colorScheme.primary),),
+              Text(" "),
+              Text("Resister now.",style: TextStyle(fontWeight: FontWeight.bold),)
+            ],
+          )
         ],
       ),
       )
