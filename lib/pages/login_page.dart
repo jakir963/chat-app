@@ -1,14 +1,29 @@
 import 'package:chat_app/component/my_button.dart';
 import 'package:chat_app/component/my_textfield.dart';
 import 'package:flutter/material.dart';
+
+import '../services/auth/auth_services.dart';
 class LoginPage extends StatelessWidget {
   // email and pw text controller
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _pwController = TextEditingController();
-   LoginPage({super.key});
-//login method
-  void login (){
-    // authenticate
+  // tap to go to resister page
+  final void Function()? onTap;
+   LoginPage({super.key,required this.onTap});
+   //login method
+  void login (BuildContext context) async{
+    final authService = AuthService();
+    //try login
+    try {
+      await authService.sinInWithEmailPassword(_emailController.text, _pwController.text);
+    } //catch error
+    catch (e){ showDialog(context: context, 
+        builder: (context)=>AlertDialog(
+          title: Text(e.toString()),
+        ),
+    );
+    }
+    
   }
 
   @override
@@ -52,7 +67,7 @@ backgroundColor: Colors.grey.shade300,
           const SizedBox(height: 25,),
           // login button
           MyButton(text: "Login",
-          onTap: login ,
+          onTap: () => login(context) ,
           ),
           const SizedBox(height: 25,),
           
@@ -61,7 +76,9 @@ backgroundColor: Colors.grey.shade300,
             children: [
               Text("Do not have account ?",style: TextStyle(color: Theme.of(context).colorScheme.primary),),
               Text(" "),
-              Text("Resister now.",style: TextStyle(fontWeight: FontWeight.bold),)
+              GestureDetector(
+                onTap: onTap,
+                  child: Text("Resister now.",style: TextStyle(fontWeight: FontWeight.bold),))
             ],
           )
         ],
