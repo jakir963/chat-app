@@ -21,7 +21,7 @@ class MyDrawer extends StatelessWidget {
        Column(children: [
          //logo
          DrawerHeader(
-             child: Center(child: Icon(Icons.message,color: Theme.of(context).primaryColor,size: 40,),)
+             child: Center(child: Icon(Icons.mobile_friendly,color: Colors.blueGrey.shade500,size: 100,),)
          ),
 
 

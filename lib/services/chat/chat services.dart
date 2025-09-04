@@ -20,12 +20,15 @@ class ChatService {
   }
 //send massage
   Future<void> sendMessage (String receiverID, message) async{
+
     // get current user info
+
     final String currentUserID = _auth.currentUser!.uid;
     final String currentUserEmail = _auth.currentUser!.email!;
     final Timestamp timestamp = Timestamp.now();
 
     //create a new massage
+
     Message newMessage = Message(
         senderID: currentUserID,
         senderEmail: currentUserEmail,
@@ -37,17 +40,23 @@ class ChatService {
     // construct chat room ID for the two users(stored)
 
     List<String>ids = [currentUserID,receiverID];
-    ids.sort();// MakeSure any two person have same ids
-    String chatRoomID = ids.join('_');
-    //add new massage to database
-    await _firestore.collection("chat_rooms").doc(chatRoomID).collection("message").add(newMessage.toMap());
+    ids.sort();
 
+    // MakeSure any two person have same ids
+
+    String chatRoomID = ids.join('_');
+
+    //add new massage to database
+
+    await _firestore.collection("chat_rooms").doc(chatRoomID).collection("message").add(newMessage.toMap());
   }
 
 
 //get massage
   Stream<QuerySnapshot> getMessage(String userID, String otherUserID){
+
     //construct room ID for two people
+
     List<String> ids = [userID, otherUserID];
     ids.sort();
     String chatRoomID = ids.join('_');
