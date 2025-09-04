@@ -1,3 +1,4 @@
+import 'package:chat_app/component/chat_bubble.dart';
 import 'package:chat_app/component/my_textfield.dart';
 import 'package:chat_app/services/auth/auth_services.dart';
 import 'package:chat_app/services/chat/chat%20services.dart';
@@ -98,8 +99,13 @@ Widget _buildMessageList(){
         crossAxisAlignment:
         isCurrentUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: [
-          Text(data['message']
-          ),
+          ChatBubble(
+          isCurrentUser: isCurrentUser,
+          message: data["message"]
+      )
+
+
+
         ],
       ),
     );
