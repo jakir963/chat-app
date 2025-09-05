@@ -21,8 +21,11 @@ class MyDrawer extends StatelessWidget {
        Column(children: [
          //logo
          DrawerHeader(
-             child: Center(child: Icon(Icons.mobile_friendly,color: Colors.blueGrey.shade500,size: 100,),)
-         ),
+           child:
+           SizedBox(
+             height: 150, //
+             child: Image.asset('lib/icon/settings.png')
+           ),         ),
 
 
          // home list tile
@@ -56,9 +59,9 @@ class MyDrawer extends StatelessWidget {
         //logout list tile
 
         Padding(
-          padding: const EdgeInsets.only(left: 20.0,bottom: 18),
+          padding: const EdgeInsets.only(bottom: 18,left: 25),
           child: ListTile(
-            title:  Text("LOGOUT",style: TextStyle(fontSize: 28,color: Colors.red[800]),),leading: Icon(Icons.logout_sharp,color: Colors.red[800],size: 36,),
+            title:  Text("LOGOUT",style: TextStyle(fontSize: 20),),leading: Icon(Icons.logout_sharp,color: Colors.red[900],size: 25),
             onTap:  logout,
           ),
         ),
