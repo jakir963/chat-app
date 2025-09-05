@@ -131,6 +131,7 @@ Widget _buildUserInput (){
             color: Colors.blue.shade500,
             shape: BoxShape.circle
           ),
+
             margin: EdgeInsets.only(right: 25),
             child: IconButton(
                 onPressed: sendMessage,

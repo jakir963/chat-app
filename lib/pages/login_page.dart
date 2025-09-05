@@ -30,59 +30,64 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
 backgroundColor: Colors.grey.shade300,
-      body: Center(
-        child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          //logo
-          Icon(Icons.message,
-          size: 60,
-            color: Theme.of(context).colorScheme.primary,
-          ),
-          const SizedBox(height: 50,),
-          
-          //welcome back massage
-          Text("welcome back, you've been missed!",
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.primary
+      body: SingleChildScrollView(
+        child: Center(
+
+          child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(height: 60,),
+
+            // put login image
+            SizedBox(
+              height: 150, // FIX: Use SizedBox to control image size without affecting other widgets
+              child: Image.asset('lib/icon/enter.png'),
             ),
-          ),
-          const SizedBox(height: 50,),
-          
-          
-          // email text field
-         MyTextfield(hintText: 'Enter Your Email',
-           obscureText: false,
-           controller: _emailController,
+            const SizedBox(height: 50), // Keep this space
 
-         ),
-          const SizedBox(height: 10,),
+            //welcome back massage
+            Text("welcome back, you've been missed!",
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.primary
+              ),
+            ),
+            const SizedBox(height: 50,),
 
-          // pw text field
-          MyTextfield(hintText: 'Password',
-            obscureText: true,
-            controller: _pwController,
 
-          ),
-          const SizedBox(height: 25,),
-          // login button
-          MyButton(text: "Login",
-          onTap: () => login(context) ,
-          ),
-          const SizedBox(height: 25,),
-          
-          //resister now
-          Row(mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("Do not have account ?",style: TextStyle(color: Theme.of(context).colorScheme.primary),),
-              Text(" "),
-              GestureDetector(
-                onTap: onTap,
-                  child: Text("Resister now.",style: TextStyle(fontWeight: FontWeight.bold),))
-            ],
-          )
-        ],
-      ),
+            // email text field
+           MyTextfield(hintText: 'Enter Your Email',
+             obscureText: false,
+             controller: _emailController,
+
+           ),
+            const SizedBox(height: 10,),
+
+            // pw text field
+            MyTextfield(hintText: 'Password',
+              obscureText: true,
+              controller: _pwController,
+
+            ),
+            const SizedBox(height: 25,),
+            // login button
+            MyButton(text: "Login",
+            onTap: () => login(context) ,
+            ),
+            const SizedBox(height: 25,),
+
+            //resister now
+            Row(mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Do not have account ?",style: TextStyle(color: Theme.of(context).colorScheme.primary),),
+                Text(" "),
+                GestureDetector(
+                  onTap: onTap,
+                    child: Text("Resister now.",style: TextStyle(fontWeight: FontWeight.bold),))
+              ],
+            )
+          ],
+        ),
+        ),
       )
     );
   }

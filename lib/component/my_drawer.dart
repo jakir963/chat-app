@@ -56,9 +56,9 @@ class MyDrawer extends StatelessWidget {
         //logout list tile
 
         Padding(
-          padding: const EdgeInsets.only(left: 25.0),
+          padding: const EdgeInsets.only(left: 20.0,bottom: 18),
           child: ListTile(
-            title: const Text("LOGOUT"),leading: Icon(Icons.logout_sharp),
+            title:  Text("LOGOUT",style: TextStyle(fontSize: 28,color: Colors.red[800]),),leading: Icon(Icons.logout_sharp,color: Colors.red[800],size: 36,),
             onTap:  logout,
           ),
         ),

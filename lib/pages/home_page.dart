@@ -17,7 +17,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Home"),
+      title: Text("Home",style: TextStyle(fontSize: 30,fontWeight:FontWeight.w500,color: Colors.blueGrey,)),
+        backgroundColor: Colors.transparent,foregroundColor: Colors.grey,
         elevation: 0,
       ),
       drawer: const MyDrawer(),
